@@ -1,0 +1,19 @@
+{
+  "name": "travel-agency-website",
+  "version": "1.0.0",
+  "description": "Web programming Course 5th semester Project",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Shahzaib0217/Travel-Agency-Website.git"
+  },
+  "author": "Shahzaib, Khansa, Zainab",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Shahzaib0217/Travel-Agency-Website/issues"
+  },
+  "homepage": "https://github.com/Shahzaib0217/Travel-Agency-Website#readme"
+}

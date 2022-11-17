@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Custom Tour</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-5 text-center text-primary"><b>Custom Tour Plan </b></h1>
+
+        <div class="row mt-5">
+            <div class="col-md-3">&nbsp;</div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Make your own offer.</div>
+                    <div class="card-body">
+                        <!-- form -->
+                        <form method="POST" action="/CustomTour">
+                            <div class="mb-3">
+                                <label>Tour Name</label>
+                                <input type="text" name="tourName" id="tourName" class="form-control" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">Tour Description</label>
+                                <textarea class="form-control" id="tourDesc" name="tourDesc" rows="3"></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <input type="submit" name="submit_button" id="submit_button" class="btn btn-primary"
+                                    value="Confirm Tour" />
+                            </div>
+                        </form>
+                        <!-- form end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

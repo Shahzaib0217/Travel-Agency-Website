@@ -21,37 +21,38 @@
         <div class="row mt-5">
             <div class="col-md-3">&nbsp;</div>
             <div class="col-md-6">
-                <!-- <% if(session.userid) { %>
-                    <h1>Hi User, Welcome</h1>
-                    <a href="/logout" class="btn btn-primary">Logout</a>
-                    <% } else { %> -->
-                <div class="card">
-                    <div class="card-header">Already a member? Signin below</div>
-                    <div class="card-body">
-                        <form method="post" action="/signin">
-                            <div class="mb-3">
-                                <label>Email Address</label>
-                                <input type="email" name="email" id="email" class="form-control" />
+                <% if(session.userid) { response.redirect('/') %>
+                    <% } else { %>
+                        <div class="card">
+                            <div class="card-header">Already a member? Signin below</div>
+                            <div class="card-body">
+                                <form method="post" action="/signin">
+                                    <div class="mb-3">
+                                        <label>Email Address</label>
+                                        <input type="email" name="email" id="email" class="form-control" />
+                                    </div>
+                                    <div class="mb-3">
+                                        <label>Password</label>
+                                        <input type="password" name="password" id="password" class="form-control" />
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" id="radio1" name="usertype"
+                                            value="admin">
+                                        <label class="form-check-label" for="radio1">Admin</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input type="radio" class="form-check-input" id="radio2" name="usertype"
+                                            value="users">
+                                        <label class="form-check-label" for="radio2">User</label>
+                                    </div>
+                                    <div class="mb-3 mt-3">
+                                        <input type="submit" class="btn btn-primary" value="Login" />
+                                    </div>
+                                </form>
+                                <h5>Forget Password?<a href="/forgetPassword">click here</a></h5>
                             </div>
-                            <div class="mb-3">
-                                <label>Password</label>
-                                <input type="password" name="password" id="password" class="form-control" />
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" id="radio1" name="usertype" value="admin">
-                                <label class="form-check-label" for="radio1">Admin</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input type="radio" class="form-check-input" id="radio2" name="usertype" value="users">
-                                <label class="form-check-label" for="radio2">User</label>
-                            </div>
-                            <div class="mb-3 mt-3">
-                                <input type="submit" class="btn btn-primary" value="Login" />
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!-- <% } %> -->
+                        </div>
+                        <% } %>
             </div>
         </div>
     </div>

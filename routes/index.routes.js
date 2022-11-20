@@ -18,5 +18,16 @@ router.post('/signup', (req, res) => { index.signup(req, res) });
 
 // Admin View
 
+//input for admin
+router.get('/admininput', (req, res) => { res.render('/home') });
+router.post('/admininput', (req, res) => { admin.admininput(req, res) });
+//delete for admin
+router.get('/delete/:id', (req, res) => { admin.deleteadmin(res, resp) });
+//search 
+router.post('/search/:id', (req, res) => { admin.adminsearch(req, res) });
+//update 
+router.get('/update/:id', (req, res) => { admin.update(req, res) });
+router.post('/update/:id', (req, res) => { users.updated(req, res) });
+
 module.exports = router;
 

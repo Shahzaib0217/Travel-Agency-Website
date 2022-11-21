@@ -4,7 +4,7 @@ const session = require("express-session")
 var cookieParser = require('cookie-parser');
 const bodyParser = require("body-parser"); // for decoding data (encoded by post)
 const path = require('path')
-const sequelize = require("./config/db")
+const models = require("./models/index")
 
 //Application configuration
 const app = express();
@@ -27,11 +27,6 @@ app.use(session({
     saveUninitialized: false, // if we have not modified session dont save it
     // store: sessionStore // it will create sessions table in database
 }));
-
-// Model Imports
-const user = require('./models/user.model')
-sequelize.sync({ force: true }); //{ force: true }
-console.log("All models were synchronized successfully.");
 
 //Import all routes
 const indexRoutes = require("./routes/index.routes");

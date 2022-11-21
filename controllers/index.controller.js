@@ -1,4 +1,4 @@
-var con = require('../db');
+var con = require('../config/db');
 // Function for sign in
 exports.signin = (req, res) => {
     const { email, password, usertype } = req.body;

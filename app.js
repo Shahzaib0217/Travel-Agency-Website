@@ -2,11 +2,9 @@
 const express = require("express")
 const session = require("express-session")
 var cookieParser = require('cookie-parser');
-var MySQLStore = require('express-mysql-session')(session);
-const mysql = require("mysql")
 const bodyParser = require("body-parser"); // for decoding data (encoded by post)
 const path = require('path')
-const con = require("./db")
+const sequelize = require("./config/db")
 
 //Application configuration
 const app = express();
@@ -20,15 +18,20 @@ app.use(bodyParser.urlencoded({ extended: false })); // For parsing application/
 app.use(bodyParser.json()); // For parsing application/json
 
 // store session in database
-var sessionStore = new MySQLStore({}/* session store options */, con);
+// var sessionStore = new MySQLStore({}/* session store options */, con);
 // Setting up session
 app.use(session({
     key: 'session_cookie_name',
     secret: 'key that will sign cookie',
     resave: false, // for every req we will create new session
     saveUninitialized: false, // if we have not modified session dont save it
-    store: sessionStore // it will create sessions table in database
+    // store: sessionStore // it will create sessions table in database
 }));
+
+// Model Imports
+const user = require('./models/user.model')
+sequelize.sync({ force: true }); //{ force: true }
+console.log("All models were synchronized successfully.");
 
 //Import all routes
 const indexRoutes = require("./routes/index.routes");

@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const sequelize = require('../config/db')
 
 const User = sequelize.define('User', {
@@ -16,6 +16,7 @@ const User = sequelize.define('User', {
     createdAt: false, // dont need this in table
     updatedAt: 'updateTimestamp'
 });
+// return User;
 
 // `sequelize.define` also returns the model
 console.log(User === sequelize.models.User); // true

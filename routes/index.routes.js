@@ -13,7 +13,7 @@ router.get('/logout', (request, response) => {
 });
 // Register
 router.get('/signup', (req, res) => { res.render('signup') });
-router.post('/signup', (req, res) => { index.signup(req, res) });
+router.post('/signup', index.signup);
 // User View
 
 // Admin View

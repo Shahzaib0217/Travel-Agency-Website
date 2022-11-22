@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const index = require("../controllers/index.controller")
+const upload = require('../config/multer')
 
 /* GET home page. */
 router.get('/', function (req, res) { res.render('home', { session: req.session }); });
@@ -13,7 +14,7 @@ router.get('/logout', (request, response) => {
 });
 // Register
 router.get('/signup', (req, res) => { res.render('signup') });
-router.post('/signup', index.signup);
+router.post('/signup', upload.single('image'), index.signup);
 // User View
 
 // Admin View

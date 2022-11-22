@@ -23,7 +23,7 @@
                     <div class="card-header">Hi! new here signup below.</div>
                     <div class="card-body">
                         <!-- form -->
-                        <form method="POST" action="/signup">
+                        <form method="POST" action="/signup" enctype="multipart/form-data">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
@@ -71,22 +71,10 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <!-- <div class="col-md-6">
+                                <div class="col-md-6">
                                     <div class="mb-3">
                                         <label>Profile Picture</label>
                                         <input type="file" name="image" id="image" class="form-control" />
-                                    </div>
-                                </div> -->
-                                <div class="col-md-6 mt-4">
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" class="form-check-input" id="radio1" name="usertype"
-                                            value="Admin">
-                                        <label class="form-check-label" for="radio1">Admin</label>
-                                    </div>
-                                    <div class="form-check form-check-inline">
-                                        <input type="radio" class="form-check-input" id="radio2" name="usertype"
-                                            value="option2">
-                                        <label class="form-check-label" for="radio2">User</label>
                                     </div>
                                 </div>
                             </div>

@@ -6,9 +6,9 @@ const upload = require('../config/multer')
 /* GET home page. */
 router.get('/', function (req, res) { res.render('home', { session: req.session }); });
 // Login
-router.get('/signin', (req, res) => { res.render('signin', { session: req.session }); });
+router.get('/signin', (req, res) => { res.render('signin', { session: req.session, response: res }); });
 router.post('/signin', (req, res) => { index.signin(req, res) });
-router.get('/logout', (request, response) => {
+router.get('/signout', (request, response) => {
     request.session.destroy();
     response.redirect("/");
 });

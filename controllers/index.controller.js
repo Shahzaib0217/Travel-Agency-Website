@@ -4,21 +4,16 @@ const User = require('../models/user.model')
 // Function for sign in
 exports.signin = async (req, res) => {
     const { email, password, usertype } = req.body;
-
     if (email && password) {
         const data = await User.findAll({ where: { userEmail: email } });
         if (data.length > 0) {
             if (data[0].userPassword == password) {
-                // req.session.userid = data[0].userID;
+                req.session.userid = data[0].userID;
                 res.redirect("/");
             }
-            else {
-                res.send('Incorrect Password');
-            }
+            else { res.send('Incorrect Password'); }
         }
-        else {
-            res.send('Incorrect Email Address');
-        }
+        else { res.send('Incorrect Email Address'); }
     }
     else {
         res.send('Please Enter Email Address and Password Details');

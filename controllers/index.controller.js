@@ -2,33 +2,23 @@ var con = require('../config/db');
 const User = require('../models/user.model')
 
 // Function for sign in
-exports.signin = (req, res) => {
+exports.signin = async (req, res) => {
     const { email, password, usertype } = req.body;
 
     if (email && password) {
-        query = `SELECT * FROM ${usertype} WHERE userEmail = "${email}"`;
-
-        con.query(query, (error, data) => {
-            if (error) {
-                console.log("error in running query")
-                throw error;
+        const data = await User.findAll({ where: { userEmail: email } });
+        if (data.length > 0) {
+            if (data[0].userPassword == password) {
+                // req.session.userid = data[0].userID;
+                res.redirect("/");
             }
             else {
-                if (data.length > 0) {
-                    if (data[0].userPassword == password) {
-                        req.session.userid = data[0].userID;
-                        res.redirect("/");
-                    }
-                    else {
-                        res.send('Incorrect Password');
-                    }
-                }
-                else {
-                    res.send('Incorrect Email Address');
-                }
+                res.send('Incorrect Password');
             }
-            res.end();
-        });
+        }
+        else {
+            res.send('Incorrect Email Address');
+        }
     }
     else {
         res.send('Please Enter Email Address and Password Details');

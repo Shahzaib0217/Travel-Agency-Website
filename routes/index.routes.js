@@ -28,9 +28,7 @@ router.post('/signup', index.signup);
 // router.get('/update/:id', (req, res) => { admin.update(req, res) });
 // router.post('/update/:id', (req, res) => { users.updated(req, res) });
 
-// Tour view
-router.get("/addtour", (req, res) => { res.render("addtour"); });
-router.post("/addtour", (req, res) => controller.addtour(req, res));
+
 
 module.exports = router;
 

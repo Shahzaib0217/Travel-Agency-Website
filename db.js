@@ -12,6 +12,7 @@ con.connect((error) => {
     if (error) {
         console.warn('error' + JSON.stringify(error, undefined, 2))
     }
+}
 );
 
 //optionalchecking

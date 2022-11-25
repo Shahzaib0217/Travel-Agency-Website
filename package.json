@@ -1,29 +1,19 @@
 {
-  "name": "travel-agency-website",
+  "name": "tours",
   "version": "1.0.0",
-  "description": "Web programming Course 5th semester Project",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Shahzaib0217/Travel-Agency-Website.git"
-  },
-  "author": "Shahzaib, Khansa, Zainab",
+  "author": "khansa",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Shahzaib0217/Travel-Agency-Website/issues"
-  },
-  "homepage": "https://github.com/Shahzaib0217/Travel-Agency-Website#readme",
   "dependencies": {
     "body-parser": "^1.20.1",
-    "cookie-parser": "^1.4.6",
     "ejs": "^3.1.8",
     "express": "^4.18.2",
-    "express-mysql-session": "^2.1.8",
-    "express-session": "^1.17.3",
-    "multer": "^1.4.5-lts.1",
-    "mysql2": "^2.3.3"
+    "mysql2": "^2.3.3",
+    "nodemon": "^2.0.20",
+    "sequelize": "^6.25.7"
   }
 }

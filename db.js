@@ -1,4 +1,4 @@
-const mysql = require("mysql");
+const mysql = require("mysql2");
 //--------------------------------------
 // Data base connection code
 const con = mysql.createConnection({
@@ -12,9 +12,13 @@ con.connect((error) => {
     if (error) {
         console.warn('error' + JSON.stringify(error, undefined, 2))
     }
-    else {
-        console.warn('Database connected')
-    }
-})
+);
 
-module.exports = con;
+//optionalchecking
+sequelize.authenticate().then(() => {
+    console.log('Connection has been established successfully.');
+}).catch((error) => {
+    console.error('Unable to connect to the database: ', error);
+});
+
+module.exports = sequelize;

@@ -15,10 +15,7 @@ router.get('/logout', (request, response) => {
 });
 // Register
 router.get('/signup', (req, res) => { res.render('signup') });
-router.post('/signup', (req, res) => { index.signup(req, res) });
-// User View
-
-// Admin View
+router.post('/signup', index.signup);
 
 //input for admin new admin added
 // router.get('/admininput', (req, res) => { res.render('/home') });

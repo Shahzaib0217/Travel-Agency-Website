@@ -17,18 +17,5 @@ router.get('/logout', (request, response) => {
 router.get('/signup', (req, res) => { res.render('signup') });
 router.post('/signup', index.signup);
 
-//input for admin new admin added
-// router.get('/admininput', (req, res) => { res.render('/home') });
-// router.post('/admininput', (req, res) => { admin.admininput(req, res) });
-// //delete for admin
-// router.get('/delete/:id', (req, res) => { admin.deleteadmin(res, resp) });
-// //search 
-// router.post('/search/:id', (req, res) => { admin.adminsearch(req, res) });
-// //update 
-// router.get('/update/:id', (req, res) => { admin.update(req, res) });
-// router.post('/update/:id', (req, res) => { users.updated(req, res) });
-
-
-
 module.exports = router;
 

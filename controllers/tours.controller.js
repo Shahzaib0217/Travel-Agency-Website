@@ -1,6 +1,6 @@
 var sequelize = require("../db");
 var db = require('../models/tours');
-const { post } = require("../routes/tour.router");
+const { post } = require("../routes/admin.routes");
 const TOURS = db.tour;
 
 exports.addtour = async (req, res) => {
@@ -44,8 +44,6 @@ exports.updatetour = async (req, res) => {
 }
 //delete tour data
 exports.deletetour = (req, res) => {
-
-
     const id = req.params.Tour_Id;
 
     const data = db.destroy({

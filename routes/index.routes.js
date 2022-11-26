@@ -12,19 +12,11 @@ router.get('/logout', (request, response) => {
     response.redirect("/");
 });
 // Register
-router.get('/signup', (req, res) => { res.render('signup') });
-router.post('/signup', index.signup);
+router.get('/addnewadmin', (req, res) => { res.render('addnewadmin') });
+router.post('/addnewadmin', index.signup);
 
-//input for admin
-router.get('/admininput', (req, res) => { res.render('/home') });
-router.post('/admininput', (req, res) => { admin.admininput(req, res) });
-//delete for admin
-router.get('/delete/:id', (req, res) => { admin.deleteadmin(res, resp) });
-//search 
-router.post('/search/:id', (req, res) => { admin.adminsearch(req, res) });
-//update 
-router.get('/update/:id', (req, res) => { admin.update(req, res) });
-router.post('/update/:id', (req, res) => { users.updated(req, res) });
+//dashboard
+router.get('/dashboard', (req, res) => { res.render('dashboard') });
 
 module.exports = router;
 

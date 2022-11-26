@@ -1,87 +1,46 @@
 var con = require('../db');
+var db = require('../models/user.model');
+var router = require('../routes/admin.routes');
+
 //input function for the admin data
 
-exports.admininput(req, res)
-{
-    if (!req.file) {
-        console.log("file not uploaded!");
-    }
-
-    // simple insertion
-    var id = req.body.userid;
-    var name = req.body.name;
-    var gender = req.body.gender;
-    var qualification = req.qualification;
-    con.query(query, (error, data) => {
-
-        if (error) {
-            throw error;
-        }
-        else {
-            res.redirect('/');
-        }
-
-    });
+exports.admininput = async (req, res) => {
+    const { name, email, password, password2, gender, phoneNumber } = req.body;
+    const userObj = await User.create({ userName: name, userEmail: email, userPassword: password, userGender: gender, userPhoneNumber: phoneNumber, userImage: 'user.jpg', role: 'admin' });
+    console.log('User was saved in Database')
+    res.redirect('/')
 }
 
-//search data of admin
-exports.adminsearch(req, res)
-{
-    var id = req.body.id;
-    //query by sequilize
-    con.query(query, function (error, user_data) {
+//update admin
+exports.editadmin = async (req, res) => {
+    const id = req.params.id;
 
-        if (error) {
-            throw error;
+    const data = await db.findAll({
+        where: {
+            userID: id
         }
-        else {
-            res.render('/displayadmin', { data: user_data, title: "Search", })
-        }
-
     });
+    res.render("updateadmin", { userdata: data[0] });
+    console.log("data need to updated been add");
+    res.redirect("/");
 }
-//delete admin by help of id
-exports.deleteadmin(req, res)
-{
-    var id = req.params.id;
-
-    con.query(query, function (error, data) {
-
-        if (error) {
-            throw error;
-        }
-        else {
-            res.redirect("/");
-        }
-
-    });
-
+//update tour data
+exports.updateadmin = async (req, res) => {
+    const { name, email, password, password2, gender, phoneNumber } = req.body;
+    const userObj = await User.update({ userName: name, userEmail: email, userPassword: password, userGender: gender, userPhoneNumber: phoneNumber, userImage: 'user.jpg', role: 'admin' }, { where: { userID: id } });
+    console.log("data updated has been add");
+    res.redirect("/");
 }
-//update data of admin
-exports.update = (req, res) => {
+//delete data of admin
+exports.deleteadmin = (req, res) => {
+    const id = req.params.id;
 
-    var id = req.params.id;
-
-
-    con.query(query, function (error, data) {
-
-        res.render('updateTable', { userData: data[0] });
-    });
-}
-//--------------------------------------
-exports.updated = (req, res) => {
-
-
-
-    con.query(query, function (error, data) {
-
-        if (error) {
-            throw error;
+    const data = db.destroy({
+        where: {
+            userID: id
         }
-        else {
-            res.redirect('/');
-        }
-
     });
 
+    console.log("data has been deleted");
+    res.redirect("/");
 }

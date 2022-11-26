@@ -1,6 +1,8 @@
 const sequelize = require("../config/db")
 // Model Imports
 // const user = require('../models/user.model')
+const tour = require('../models/tour.model')
 
-sequelize.sync(); //{ force: true }
+tour.sync();
+// sequelize.sync(); //{ force: true }
 console.log("All models were synchronized successfully.");

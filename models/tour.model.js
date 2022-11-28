@@ -9,6 +9,7 @@ const Tour = sequelize.define('Tour', {
     tourHotels: { type: DataTypes.STRING, allowNull: false },
     tourPrice: { type: DataTypes.INTEGER, allowNull: false },
     tourImage: { type: DataTypes.STRING, allowNull: false },
+    // tourBanner: { type: DataTypes.STRING, allowNull: false },
 }, {
     freezeTableName: true,
     timestamps: true, // enabling time stamps

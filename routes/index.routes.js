@@ -22,8 +22,18 @@ router.post('/resetPassword/:id/:token', index.postResetPassword)
 // Register
 router.get('/signup', (req, res) => { res.render('signup') });
 router.post('/signup', upload.single('image'), index.signup);
-// User View
-router.get('/tours', (req, res) => { user.Display(req, res, 'tours', 'Select * from tour') });
+//==========  User View ============
+//Displaying Tours
+router.get('/tours', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour') });
+router.get('/tour/:id', user.DisplayTour);
+// Comments
+router.post('/AddComment/:id', user.AddComment);
+router.post('/AddReply/:tourid/:cmntid', user.AddReply);
+//Tour Bookings
+router.get('/bookTour/:tourid', user.BookTour);
+router.get('/customOrder', user.BookTour);
+router.post('/bookTour/:tourid', user.BookTour);
+router.post('/customOrder', user.BookTour);
 // Admin View
 
 module.exports = router;

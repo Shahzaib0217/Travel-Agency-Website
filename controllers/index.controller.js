@@ -12,6 +12,8 @@ exports.signin = async (req, res) => {
         if (data.length > 0) {
             if (data[0].userPassword == password) {
                 req.session.userid = data[0].userID;
+                req.session.username = data[0].userName;
+                req.session.userimg = data[0].userImage;
                 res.redirect("/");
             }
             else { res.send('Incorrect Password'); }

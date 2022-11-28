@@ -2,24 +2,26 @@
 <html lang="en">
 
 <head>
-    <%- include('partials/head'); %>
+    <%- include('../partials/head'); %>
         <title>Tours</title>
 </head>
 
 <body>
     <% if(session.userid) { %>
-        <%- include('partials/nav2'); %>s
+        <%- include('../partials/nav2'); %>s
             <% } else{ %>
-                <%- include('partials/nav'); %>
+                <%- include('../partials/nav'); %>
                     <% }%>
-                        <%- include('partials/searchBar'); %>
+                        <%- include('../partials/searchBar'); %>
                             <div class="container mb-3">
                                 <div class="row row-cols-1 row-cols-md-3 g-4">
                                     <% data.forEach(function(tour_data){ %>
                                         <div class="col">
                                             <div class="card h-100 border-0">
-                                                <img src="/tourCards/<%= tour_data.tourImage %>" class="card-img-top"
-                                                    alt="tourCard">
+                                                <a href="/tour/<%= tour_data.tourID %>">
+                                                    <img src="/tourCards/<%= tour_data.tourImage %>"
+                                                        class="card-img-top" alt="tourCard">
+                                                </a>
                                             </div>
                                         </div>
                                         <% }); %>
@@ -47,16 +49,19 @@
                                                     <% for(let pageCount=1; pageCount<=totalPages; pageCount++){ %>
                                                         <%if(pageCount==page) {%>
                                                             <li class="page-item active">
-                                                                <a class="page-link" href="#">
+                                                                <a class="page-link" href="#"
+                                                                    style="background-color: green; border-color: green;">
                                                                     <%= pageCount%><span
                                                                             class="sr-only">(current)</span>
                                                                 </a>
                                                             </li>
                                                             <%}else{%>
-                                                                <li class="page-item btn-success"><a class="page-link"
+                                                                <li class="page-item">
+                                                                    <a class="page-link"
                                                                         href="/<%= view%>?page=<%=pageCount%>">
                                                                         <%= pageCount%>
-                                                                    </a></li>
+                                                                    </a>
+                                                                </li>
                                                                 <%} }%>
                                                                     <li
                                                                         class="page-item <%=(page==totalPages)?`disabled`:``%>">
@@ -70,8 +75,8 @@
                                     <% } %>
                             </center>
                             <% if(session.userid) { %>
-                                <%- include('partials/footer2'); %>
+                                <%- include('../partials/footer2'); %>
                                     <% } else{ %>
-                                        <%- include('partials/footer'); %>
+                                        <%- include('../partials/footer'); %>
                                             <% }%>
 </body>

@@ -3,7 +3,7 @@ var router = express.Router();
 const index = require("../controllers/index.controller")
 const user = require("../controllers/userView.controller")
 const upload = require('../config/multer')
-const admin = require("../controllers/admin.controller")
+//const admin = require("../controllers/admin.controller")
 /* GET home page. */
 router.get('/', (req, res) => { res.render('home', { session: req.session }); });
 // Login
@@ -42,7 +42,7 @@ router.get('/admin', (req, res) => { user.Display(req, res, 'admin/dashboard', '
 router.get('/admin/insert')
 router.get('/admin/edit')
 router.get('/admin/delete')
-router.get('/admin/reloadTours', admin.ReloadTour)
+//router.get('/admin/reloadTours', admin.ReloadTour)
 router.get('/admin/customOrders')
 router.get('/admin/Orders')
 router.get('/admin/Feedback')

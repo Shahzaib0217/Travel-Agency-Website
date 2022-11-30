@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>AddTour</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-5 text-center text-primary"><b>Add Tour </b></h1>
+
+        <div class="row mt-5">
+            <div class="col-md-3">&nbsp;</div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">Add tour details.</div>
+                    <div class="card-body">
+                        <!-- form -->
+                        <form method="POST" action="/addtour">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Tour Id</label>
+                                        <input type="text" name="tid" id="tid" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Tour Name</label>
+                                        <input type="text" name="name" id="name" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Days</label>
+                                        <input type="text" name="day" id="day" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Price</label>
+                                        <input type="text" name="price" id="price" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Ratings</label>
+                                        <input type="text" name="rate" id="rate" class="form-control" />
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Depaute Date</label>
+                                        <input type="text" name="sdate" id="sdate" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label>Return Date</label>
+                                        <input type="text" name="ddate" id="ddate" class="form-control" />
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="submit" name="submit_button" id="submit_button" class="btn btn-primary"
+                                    value="submit" />
+                            </div>
+                        </form>
+                        <!-- form end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

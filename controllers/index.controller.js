@@ -12,9 +12,13 @@ exports.signin = async (req, res) => {
         if (data.length > 0) {
             if (data[0].userPassword == password) {
                 req.session.userid = data[0].userID;
+                req.session.userEmail = data[0].userEmail;
                 req.session.username = data[0].userName;
                 req.session.userimg = data[0].userImage;
-                res.redirect("/");
+                if (data[0].role == "user") {
+                    res.redirect("/");
+                }
+                else { res.redirect("/admin") }
             }
             else { res.send('Incorrect Password'); }
         }

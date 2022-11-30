@@ -3,7 +3,7 @@ var router = express.Router();
 const index = require("../controllers/index.controller")
 const user = require("../controllers/userView.controller")
 const upload = require('../config/multer')
-
+const admin = require("../controllers/admin.controller")
 /* GET home page. */
 router.get('/', (req, res) => { res.render('home', { session: req.session }); });
 // Login
@@ -31,10 +31,20 @@ router.post('/AddComment/:id', user.AddComment);
 router.post('/AddReply/:tourid/:cmntid', user.AddReply);
 //Tour Bookings
 router.get('/bookTour/:tourid', user.BookTour);
-router.get('/customOrder', user.BookTour);
-router.post('/bookTour/:tourid', user.BookTour);
-router.post('/customOrder', user.BookTour);
+router.get('/customOrder', user.CustomTour);
+router.post('/bookTour/:tourid', user.PostBookTour);
+router.post('/customOrder', user.PostCustomTour); // change function
+// User Feedback
+router.get('/feedback/:userID/:tourID', user.feedback)
+router.post('/feedback/:userID/:tourID', user.postfeedback)
 // Admin View
+router.get('/admin', (req, res) => { user.Display(req, res, 'admin/dashboard', 'Select * from tour') });
+router.get('/admin/insert')
+router.get('/admin/edit')
+router.get('/admin/delete')
+router.get('/admin/reloadTours', admin.ReloadTour)
+router.get('/admin/customOrders')
+router.get('/admin/Orders')
+router.get('/admin/Feedback')
 
 module.exports = router;
-

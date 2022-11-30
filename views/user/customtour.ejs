@@ -11,10 +11,10 @@
         <div class="col-md-3 ">&nbsp;</div>
         <div class="col-md-6 m-auto ">
             <div class="card ">
-                <div class="card-header">Fill the form below for completing Order.</div>
+                <div class="card-header">Fill the form below for custom Order.</div>
                 <div class="card-body">
                     <!-- form -->
-                    <form method="POST" action="/bookTour/<%= TourID %>" class="needs-validation" novalidate>
+                    <form method="POST" action="/customOrder" class="needs-validation" novalidate>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="mb-3">
@@ -43,6 +43,63 @@
                             </div>
                         </div>
                         <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Select City</label>
+                                    <select name="Tourcity" id="Tourcity" class="form-control" required>
+                                        <option value="Murree">Murree</option>
+                                        <option value="Swat">Swat</option>
+                                        <option value="Hunza">Hunza</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Tour Inclusions</label>
+                                    <select name="TourIncl" id="TourIncl" class="form-control" required>
+                                        <option value="1300cc car with Toll Taxes">1300cc car with Toll Taxes</option>
+                                        <option value="1500cc car with Toll Taxes">1500cc car with Toll Taxes</option>
+                                        <option value="1800cc car with Toll Taxes">1800cc car with Toll Taxes</option>
+                                    </select>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Select Hotel</label>
+                                    <select name="Hotels" id="Hotels" class="form-control" required>
+                                        <option value="A1 Hotel">A1 Hotel</option>
+                                        <option value="A2 Hotel">A2 Hotel</option>
+                                        <option value="A3 Hotel">A3 Hotel</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label>Select Duration</label>
+                                    <select name="Duration" id="Duration" class="form-control" required>
+                                        <option value="1 Day">1 Day</option>
+                                        <option value="3 Days">3 Days</option>
+                                        <option value="5 Days">5 Days</option>
+                                        <option value="7 Days">7 Days</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-3">
+                                    <label>Tour Description</label>
+                                    <textarea name="TourDesc" id="TourDesc" cols="30" rows="5" class="form-control"
+                                        required style="background: #fff; resize: none;"></textarea>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="row">
                             <div class="form-group">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
@@ -57,7 +114,7 @@
                             <div class="col-md-6 mt-4 ">
                                 <div class="mb-3">
                                     <input type="submit" name="submit_button" id="submit_button" class="btn btn-primary"
-                                        value="submit" />
+                                        value="Place Order" />
                                 </div>
                             </div>
                         </div>

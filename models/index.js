@@ -1,11 +1,19 @@
 const sequelize = require("../config/db")
 // Model Imports
-// const user = require('../models/user.model')
-// const tour = require('../models/tour.model')
-const comment = require('../models/comment.model')
-const reply = require('../models/reply.model')
+const User = require('../models/user.model')
+const Tour = require('../models/tour.model')
+const CustomOrder = require('../models/customorder.model')
+const Order = require('../models/order.model')
+const Comment = require('../models/comment.model')
+const Reply = require('../models/reply.model')
+const Feedback = require('../models/feedback.model')
 
-comment.sync();
-reply.sync();
+Tour.sync()
+CustomOrder.sync()
+Order.sync()
+Comment.sync()
+Reply.sync()
+Feedback.sync()
+
 // sequelize.sync(); //{ force: true }
 console.log("All models were synchronized successfully.");

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+        <title>Tour</title>
+</head>
+
+<body>
+    <% if(session.userid) { %>
+        <%- include('../partials/nav2'); %>
+            <% } else{ %>
+                <%- include('../partials/nav'); %>
+                    <% }%>
+                        <div class="d-flex justify-content-center mt-3">
+                            <img src="/tourBanners/<%= data[0].tourBanner %>" alt="<%= data[0].tourName %>">
+                        </div>
+                        <div class="col-md-6 m-auto mb-4">
+                            <div class="card border-0">
+                                <div class="card-body p-4">
+                                    <h1 class="text-center">
+                                        <%= data[0].tourName %>
+                                    </h1>
+                                    <h5>Tour Description</h5>
+                                    <p>
+                                        <%= data[0].tourDescription %>
+                                    </p>
+                                    <h5>Tour Inclusions</h5>
+                                    <p>
+                                        <%= data[0].tourInclusions %>
+                                    </p>
+                                    <h5>Tour Hotel Stays</h5>
+                                    <p>
+                                        <%= data[0].tourHotels %>
+                                    </p>
+                                    <!-- =============== -->
+                                    <% if(session.userid) { %>
+                                        <div class="mb-3 mt-3 text-center">
+                                            <a href="/bookTour/<%= data[0].tourID %>" type="button"
+                                                class="btn btn-success text-center">Book
+                                                Tour</a>
+                                        </div>
+                                        <% } %>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- New Comment Section -->
+                        <section>
+                            <hr class="bg-success border-2 border-top border-success">
+                            <h4 class="text-center mb-4 pb-2">Comments section</h4>
+                            <div class="d-flex justify-content-center">
+                                <img class="rounded-circle shadow-1-strong me-3" src="/images/<%= session.userimg %>"
+                                    alt="avatar" width="40" height="40" />
+                                <form action="/AddComment/<%= data[0].tourID %>" method="post"
+                                    class="form-outline w-50">
+                                    <textarea class="form-control" id="comment" name="comment" rows="4"
+                                        placeholder="Add your comments here"
+                                        style="background: #fff; resize: none;"></textarea>
+                                    <div class="mb-3 mt-3 text-center">
+                                        <input type="submit" class="btn btn-success btn-sm text-center"
+                                            value="Post comment" />
+                                        <input type="reset" class="btn btn-outline-success btn-sm text-center"
+                                            value="Cancel" />
+                                    </div>
+                                </form>
+                            </div>
+                        </section>
+                        <!-- Previous Comments and Replies -->
+                        <section>
+                            <div class="col-md-7 m-auto mb-4">
+                                <div class="card border-0">
+                                    <div class="card-body p-4">
+                                        <h4 class="text-center mb-4 pb-2">Previous Comments</h4>
+                                        <% Comment.forEach(function(Comment){ %>
+                                            <div class="d-flex justify-content-center mt-3">
+                                                <img class="rounded-circle shadow-1-strong me-3"
+                                                    src="/images/<%= Comment.userImage %>" alt="avatar" width="40"
+                                                    height="40" />
+                                                <div class="flex-grow-1 flex-shrink-1">
+                                                    <div class="d-flex justify-content-between ">
+                                                        <p class="mb-1">
+                                                            <%= Comment.userName %> <span class="small">- <%=
+                                                                        Comment.updateTimestamp %>
+                                                                </span>
+                                                        </p>
+                                                        <div class="dropdown dropend me-3">
+                                                            <a href="/tours" class="nav-link dropdown-toggle"
+                                                                data-bs-toggle="dropdown">
+                                                                <span>reply</span></a>
+                                                            <div class="dropdown-menu">
+                                                                <form
+                                                                    action="/AddReply/<%= data[0].tourID %>/<%= Comment.commentID %>"
+                                                                    method="post" class="form-outline w-100">
+                                                                    <textarea class="form-control" id="reply"
+                                                                        name="reply" rows="4"
+                                                                        placeholder="Add your reply here"
+                                                                        style="background: #fff; resize: none;"></textarea>
+                                                                    <div class="mb-3 mt-3 text-center">
+                                                                        <input type="submit"
+                                                                            class="btn btn-success btn-sm text-center"
+                                                                            value="Reply" />
+                                                                        <input type="reset"
+                                                                            class="btn btn-outline-success btn-sm text-center"
+                                                                            value="Cancel" />
+                                                                    </div>
+                                                                </form>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <p class="small mb-0">
+                                                        <%= Comment.commentMessage %>
+                                                    </p>
+                                                    <% reply.forEach(function(reply){ %>
+                                                        <% if(reply.commentID==Comment.commentID){ %>
+                                                            <div class="d-flex flex-start mt-4">
+                                                                <img class="rounded-circle shadow-1-strong"
+                                                                    src="/images/<%= reply.userImage %>" alt="avatar"
+                                                                    width="40" height="40" />
+
+                                                                <div class="flex-grow-1 flex-shrink-1">
+                                                                    <div>
+                                                                        <div
+                                                                            class="d-flex justify-content-between align-items-center">
+                                                                            <p class="m-1 ">
+
+                                                                                <%= reply.userName %> <span
+                                                                                        class="small">-
+                                                                                        <%= reply.updateTimestamp %>
+                                                                                    </span>
+                                                                            </p>
+                                                                        </div>
+                                                                        <p class="small mb-0">
+                                                                            <%= reply.replyMessage %>
+                                                                        </p>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <% } %>
+                                                                <% }); %>
+                                                </div>
+                                            </div>
+                                            <% }); %>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- =============== -->
+                        <% if(session.userid) { %>
+                            <%- include('../partials/footer2'); %>
+                                <% } else{ %>
+                                    <%- include('../partials/footer'); %>
+                                        <% }%>
+
+                                            <!-- rating.js file -->
+                                            <!-- <script src="js/addons/rating.js"></script> -->
+</body>

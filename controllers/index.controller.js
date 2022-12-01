@@ -6,6 +6,7 @@ require("dotenv").config();
 
 // Function for sign in
 exports.signin = async (req, res) => {
+
     const { email, password } = req.body;
     if (email && password) {
         const data = await User.findAll({ where: { userEmail: email } });

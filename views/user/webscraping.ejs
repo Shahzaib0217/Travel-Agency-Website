@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+        <title>Scrapped Tours</title>
+</head>
+
+<body>
+    <%- include('../partials/Nav2'); %>
+        <div class="container">
+            <h1 class="text-center mt-3 mb-3">
+                Scrapped Tours
+            </h1>
+            <hr class="bg-success border-2 border-top border-success">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>Title</th>
+                            <th>Price</th>
+                            <th>Url</th>
+                        </tr>
+                        <% data.forEach(function(tour_data){ %>
+                            <tr style=" background-color:cadetblue;">
+                                <td>
+                                    <%= tour_data.title %>
+                                </td>
+                                <td>
+                                    <%= tour_data.price %>
+                                </td>
+                                <td>
+                                    <%= tour_data.url %>
+                                </td>
+
+                            </tr>
+                            <% }); %>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <%- include('../partials/footer2'); %>
+</body>

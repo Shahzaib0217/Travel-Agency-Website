@@ -4,6 +4,7 @@ const index = require("../controllers/index.controller")
 const user = require("../controllers/userView.controller")
 const upload = require('../config/multer')
 const admin = require("../controllers/admin.controller")
+const scrap = require("../controllers/webscraping");
 /* GET home page. */
 router.get('/', (req, res) => { res.render('home', { session: req.session }); });
 // Login
@@ -34,6 +35,8 @@ router.get('/bookTour/:tourid', user.BookTour);
 router.get('/customOrder', user.CustomTour);
 router.post('/bookTour/:tourid', user.PostBookTour);
 router.post('/customOrder', user.PostCustomTour); // change function
+//webscraping
+router.get('/moretour', scrap.display);
 // User Feedback
 router.get('/feedback/:userID/:tourID', user.feedback)
 router.post('/feedback/:userID/:tourID', user.postfeedback)

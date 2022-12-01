@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/Shahzaib0217/Travel-Agency-Website#readme",
   "dependencies": {
+    "axios": "^1.2.0",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.1",
+    "cheerio": "^1.0.0-rc.12",
     "connect-session-sequelize": "^7.1.5",
     "cookie-parser": "^1.4.6",
     "dotenv": "^16.0.3",

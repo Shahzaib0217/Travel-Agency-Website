@@ -1,5 +1,4 @@
 //Import all packages
-const s = require('./pupeteer');
 const express = require("express")
 const session = require("express-session")
 var SequelizeStore = require("connect-session-sequelize")(session.Store);

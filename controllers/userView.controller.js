@@ -65,8 +65,8 @@ exports.PostBookTour = async (req, res) => {
     const tourData = await Tour.findAll({ where: { tourID: TourID } });
     await Order.create({ userID: req.session.userid, tourID: TourID, totalPersons: TotalPersons, tourDeptDate: tourDate, customerAddress: address });
     // sending email
-    // res.render("user/orderReceipt", { tourName: tourData[0].tourName, tpersons: TotalPersons, tdate: tourDate, address: address, city: tourData[0].tourCity, incl: tourData[0].tourInclusions, hotel: tourData[0].tourHotels, duration: tourData[0].tourDuration, descrip: tourData[0].tourDescription, bill: tourData[0].tourPrice }, (err, html) => { pdf.convertpdf(req, res, err, html) })
-    res.redirect(`/feedback/${req.session.userid}/${TourID}`)
+    res.render("user/orderReceipt", { tourName: tourData[0].tourName, tpersons: TotalPersons, tdate: tourDate, address: address, city: tourData[0].tourCity, incl: tourData[0].tourInclusions, hotel: tourData[0].tourHotels, duration: tourData[0].tourDuration, descrip: tourData[0].tourDescription, bill: tourData[0].tourPrice }, (err, html) => { pdf.convertpdf(req, res, err, html) })
+    // res.redirect(`/feedback/${req.session.userid}/${TourID}`)
 }
 
 exports.PostCustomTour = async (req, res) => {

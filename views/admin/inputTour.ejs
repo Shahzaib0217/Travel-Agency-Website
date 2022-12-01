@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+        <title>Admin Panel</title>
+</head>
+
+<body>
+    <%- include('../partials/adminNav'); %>
+        <div class="container">
+            <h1 class="mt-5 mb-5 text-center text-primary text-success"><b>Add New Tour</b></h1>
+
+            <div class="row mt-5">
+                <div class="col-md-3">&nbsp;</div>
+                <div class="col-md-6">
+                    <div class="card bg-light">
+                        <div class="card-header">Enter New Tour Data below</div>
+                        <div class="card-body">
+                            <form method="post" action="/admin/insert" enctype="multipart/form-data"
+                                class="needs-validation" novalidate>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label>Tour Name</label>
+                                            <input type="text" name="name" id="name" class="form-control" required />
+                                        </div>
+                                        <div class="valid-feedback">
+                                            Looks good!
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label>Select City</label>
+                                            <select name="Tourcity" id="Tourcity" class="form-control" required>
+                                                <option value="Murree">Murree</option>
+                                                <option value="Swat">Swat</option>
+                                                <option value="Hunza">Hunza</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="mb-3">
+                                            <label>Tour Description</label>
+                                            <textarea name="TourDesc" id="TourDesc" cols="30" rows="5"
+                                                class="form-control" required
+                                                style="background: #fff; resize: none;"></textarea>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label>Phone Number</label>
+                                            <input type="number" name="phoneNumber" id="phoneNumber"
+                                                class="form-control" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label>Gender</label>
+                                            <select name="gender" id="gender" class="form-control" required>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label>Profile Picture</label>
+                                            <input type="file" name="image" id="image" class="form-control" required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mt-4 ">
+                                        <div class="mb-3">
+                                            <input type="submit" name="submit_button" id="submit_button"
+                                                class="btn btn-primary" value="submit" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+                'use strict';
+                window.addEventListener('load', function () {
+                    // Fetch all the forms we want to apply custom Bootstrap validation styles to
+                    var forms = document.getElementsByClassName('needs-validation');
+                    // Loop over them and prevent submission
+                    var validation = Array.prototype.filter.call(forms, function (form) {
+                        form.addEventListener('submit', function (event) {
+                            if (form.checkValidity() === false) {
+                                event.preventDefault();
+                                event.stopPropagation();
+                            }
+                            form.classList.add('was-validated');
+                        }, false);
+                    });
+                }, false);
+            })();
+        </script>
+</body>

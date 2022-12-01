@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+        <title>Feedback</title>
+</head>
+
+<body>
+    <%- include('../partials/adminNav'); %>
+        <div class="container">
+            <h1 class="text-center mt-3 mb-3">
+                Feedback Details
+            </h1>
+            <hr class="bg-success border-2 border-top border-success">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th>User ID</th>
+                            <th>Tour ID</th>
+                            <th>Review</th>
+                        </tr>
+                        <% data.forEach(function(tour_data){ %>
+                            <tr style=" background-color:cadetblue;">
+                                <td>
+                                    <%= tour_data.userID %>
+                                </td>
+                                <td>
+                                    <%= tour_data.tourID %>
+                                </td>
+                                <td>
+                                    <%= tour_data.review %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </table>
+                </div>
+            </div>
+            <center>
+                <% if(title=='Movies' ) { %>
+                    <div class="clearfix">
+                        <div class="hint-text">
+                            Showing <b>
+                                <%= movies.length%>
+                            </b> out of
+                            <b>
+                                <%= movieCount%>
+                            </b> Feedbacks
+                        </div>
+                        <div>
+                            <nav aria-label="...">
+                                <ul class="pagination justify-content-center">
+                                    <li class="page-item <%=(page==1)?`disabled`:``%>">
+                                        <a class="page-link" href="/?page=<%=(page==1)?`1`:`${page-1}`%>"
+                                            tabindex="-1">Previous</a>
+                                    </li>
+                                    <% for(let pageCount=1; pageCount<=totalPages; pageCount++){ %>
+                                        <%if(pageCount==page) {%>
+                                            <li class="page-item active">
+                                                <a class="page-link" href="#"
+                                                    style="background-color: green; border-color: green;">
+                                                    <%= pageCount%><span class="sr-only">(current)</span>
+                                                </a>
+                                            </li>
+                                            <%}else{%>
+                                                <li class="page-item">
+                                                    <a class="page-link" href="/<%= view%>?page=<%=pageCount%>">
+                                                        <%= pageCount%>
+                                                    </a>
+                                                </li>
+                                                <%} }%>
+                                                    <li class="page-item <%=(page==totalPages)?`disabled`:``%>">
+                                                        <a class="page-link"
+                                                            href="/?page=<%=(page==totalPages)?`totalPages`:`${Number(page)+1}`%>">Next</a>
+                                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <% } %>
+            </center>
+        </div>
+</body>

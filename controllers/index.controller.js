@@ -114,6 +114,6 @@ exports.signup = async (req, res) => {
     const image_path = req.file.originalname;
     const userObj = await User.create({ userName: name, userEmail: email, userPassword: password, userGender: gender, userPhoneNumber: phoneNumber, userImage: image_path, role: 'user' });
     console.log('User was saved in Database')
-    res.send('user created')
+    res.redirect('/signin')
 }
 

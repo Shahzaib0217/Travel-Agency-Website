@@ -5,13 +5,14 @@ const CustomOrder = require('../models/customorder.model')
 const Order = require('../models/order.model')
 const Comment = require('../models/comment.model')
 const Reply = require('../models/reply.model')
+const Feedback = require('../models/feedback.model')
 const sequelize = require("../config/db")
 const { QueryTypes } = require('sequelize');
 const pdf = require("../controllers/pdf.controller")
 
 // Display Fuction
-exports.Display = async (req, res, displayFile, pquery, pview) => {
-    const totalMovies = await sequelize.query("SELECT COUNT(*) FROM tour", { type: QueryTypes.SELECT });
+exports.Display = async (req, res, displayFile, pquery, table, pview) => {
+    const totalMovies = await sequelize.query(`SELECT COUNT(*) FROM ${table} `, { type: QueryTypes.SELECT });
     let movieCount = totalMovies[0]["COUNT(*)"];
     let page = req.query.page ? req.query.page : 1;
     let moviesPerPage = req.query.moviesPerPage ? req.query.moviesPerPage : 6;  // ?
@@ -65,7 +66,7 @@ exports.PostBookTour = async (req, res) => {
     const tourData = await Tour.findAll({ where: { tourID: TourID } });
     await Order.create({ userID: req.session.userid, tourID: TourID, totalPersons: TotalPersons, tourDeptDate: tourDate, customerAddress: address });
     // sending email
-    // res.render("user/orderReceipt", { tourName: tourData[0].tourName, tpersons: TotalPersons, tdate: tourDate, address: address, city: tourData[0].tourCity, incl: tourData[0].tourInclusions, hotel: tourData[0].tourHotels, duration: tourData[0].tourDuration, descrip: tourData[0].tourDescription, bill: tourData[0].tourPrice }, (err, html) => { pdf.convertpdf(req, res, err, html) })
+    res.render("user/orderReceipt", { tourName: tourData[0].tourName, tpersons: TotalPersons, tdate: tourDate, address: address, city: tourData[0].tourCity, incl: tourData[0].tourInclusions, hotel: tourData[0].tourHotels, duration: tourData[0].tourDuration, descrip: tourData[0].tourDescription, bill: tourData[0].tourPrice }, (err, html) => { pdf.convertpdf(req, res, err, html) })
     res.redirect(`/feedback/${req.session.userid}/${TourID}`)
 }
 
@@ -81,9 +82,12 @@ exports.PostCustomTour = async (req, res) => {
 // User Feeback
 exports.feedback = async (req, res) => {
     const { userID, tourID } = req.params
-    res.render('user/feedback', { userID: userID, tourID: tourID })
+    res.render('user/feedback', { UserID: userID, TourID: tourID })
 }
 
 exports.postfeedback = async (req, res) => {
-    res.render('user/feedback')
+    const { review } = req.body
+    const { userID, tourID } = req.params
+    await Feedback.create({ tourID: tourID, userID: userID, review: review });
+    res.redirect('/')
 }

@@ -3,7 +3,7 @@ var router = express.Router();
 const index = require("../controllers/index.controller")
 const user = require("../controllers/userView.controller")
 const upload = require('../config/multer')
-//const admin = require("../controllers/admin.controller")
+const admin = require("../controllers/admin.controller")
 /* GET home page. */
 router.get('/', (req, res) => { res.render('home', { session: req.session }); });
 // Login
@@ -24,7 +24,7 @@ router.get('/signup', (req, res) => { res.render('signup') });
 router.post('/signup', upload.single('image'), index.signup);
 //==========  User View ============
 //Displaying Tours
-router.get('/tours', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour') });
+router.get('/tours', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour', 'tour') });
 router.get('/tour/:id', user.DisplayTour);
 // Comments
 router.post('/AddComment/:id', user.AddComment);
@@ -38,13 +38,14 @@ router.post('/customOrder', user.PostCustomTour); // change function
 router.get('/feedback/:userID/:tourID', user.feedback)
 router.post('/feedback/:userID/:tourID', user.postfeedback)
 // Admin View
-router.get('/admin', (req, res) => { user.Display(req, res, 'admin/dashboard', 'Select * from tour') });
-router.get('/admin/insert')
+router.get('/admin', (req, res) => { user.Display(req, res, 'admin/dashboard', 'Select * from tour', 'tour') });
+router.get('/admin/reloadTours', admin.ReloadTour)
+router.get('/admin/customOrders', (req, res) => { user.Display(req, res, 'admin/displayCustOrders', 'Select * from customorder', 'customorder') })
+router.get('/admin/Orders', (req, res) => { user.Display(req, res, 'admin/displayOrders', 'SELECT * FROM `order`', '`order`') })
+router.get('/admin/Feedback', (req, res) => { user.Display(req, res, 'admin/displayfeedback', 'Select * from feedback', 'feedback') })
+router.get('/admin/insert', (req, res) => { res.render('admin/inputTour') })
 router.get('/admin/edit')
 router.get('/admin/delete')
-//router.get('/admin/reloadTours', admin.ReloadTour)
-router.get('/admin/customOrders')
-router.get('/admin/Orders')
-router.get('/admin/Feedback')
-
+router.post('/admin/insert')
+router.post('/admin/edit')
 module.exports = router;

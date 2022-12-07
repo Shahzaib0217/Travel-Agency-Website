@@ -7,6 +7,8 @@ const Order = require('../models/order.model')
 const Comment = require('../models/comment.model')
 const Reply = require('../models/reply.model')
 const Feedback = require('../models/feedback.model')
+const Contact = require('../models/contact.model')
+
 
 Tour.sync()
 CustomOrder.sync()
@@ -15,6 +17,7 @@ Comment.sync()
 Reply.sync()
 User.sync()
 Feedback.sync()
+Contact.sync()
 
 // sequelize.sync(); //{ force: true }
 console.log("All models were synchronized successfully.");

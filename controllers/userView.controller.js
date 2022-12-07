@@ -97,3 +97,8 @@ exports.sendContact = async (req, res) => {
     // await Contact.create({ userID: req.session.userid, userEmail: session.userEmail, message: contact });
     res.redirect('/')
 }
+
+exports.search = async (req, res) => {
+    const { search } = req.body
+    this.Display(req, res, 'user/Alltours', `Select * from tour WHERE tourName LIKE '%${search}%'`, 'tour')
+}

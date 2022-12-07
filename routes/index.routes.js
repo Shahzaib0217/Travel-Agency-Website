@@ -27,6 +27,8 @@ router.post('/signup', upload.single('image'), index.signup);
 //Displaying Tours
 router.get('/tours', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour', 'tour') });
 router.get('/tour/:id', user.DisplayTour);
+//search
+router.post('/search', user.search)
 // Comments
 router.post('/AddComment/:id', user.AddComment);
 router.post('/AddReply/:tourid/:cmntid', user.AddReply);

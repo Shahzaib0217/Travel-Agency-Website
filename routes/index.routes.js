@@ -36,12 +36,12 @@ router.get('/signup', noAuth, (req, res) => { res.render('signup') });
 router.post('/signup', upload.single('image'), index.signup);
 //==========  User View ============
 //Displaying Tours
-router.get('/tours', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour', 'tour', 'tours') });
+router.get('/tours', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour', 'Tour', 'tours') });
 router.get('/tour/:id', user.DisplayTour);
 //filteration
-router.get('/3DayTour', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour where tourDuration=3', 'tour', '3DayTour') });
-router.get('/5DayTour', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour where tourDuration=5', 'tour', '5DayTour') });
-router.get('/7DayTour', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour where tourDuration=7', 'tour', '7DayTour') });
+router.get('/3DayTour', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour where tourDuration=3', 'Tour', '3DayTour') });
+router.get('/5DayTour', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour where tourDuration=5', 'Tour', '5DayTour') });
+router.get('/7DayTour', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour where tourDuration=7', 'Tour', '7DayTour') });
 //search
 router.post('/search', user.search)
 // Comments
@@ -65,9 +65,9 @@ router.post('/feedback/:userID/:tourID', user.postfeedback)
 // Admin View
 router.get('/admin', [Auth, adminAuth], (req, res) => { user.Display(req, res, 'admin/dashboard', 'Select * from tour', 'tour', 'admin') });
 router.get('/admin/reloadTours', [Auth, adminAuth], admin.ReloadTour)
-router.get('/admin/customOrders', [Auth, adminAuth], (req, res) => { user.Display(req, res, 'admin/displayCustOrders', 'Select * from customorder', 'customorder') })
-router.get('/admin/Orders', [Auth, adminAuth], (req, res) => { user.Display(req, res, 'admin/displayOrders', 'SELECT * FROM `order`', '`order`') })
-router.get('/admin/Feedback', [Auth, adminAuth], (req, res) => { user.Display(req, res, 'admin/displayfeedback', 'Select * from feedback', 'feedback') })
+router.get('/admin/customOrders', [Auth, adminAuth], (req, res) => { user.Display(req, res, 'admin/displayCustOrders', 'Select * from customorder', 'CustomOrder') })
+router.get('/admin/Orders', [Auth, adminAuth], (req, res) => { user.Display(req, res, 'admin/displayOrders', 'SELECT * FROM `order`', '`Order`') })
+router.get('/admin/Feedback', [Auth, adminAuth], (req, res) => { user.Display(req, res, 'admin/displayfeedback', 'Select * from feedback', 'Feedback') })
 router.get('/admin/insert', [Auth, adminAuth], (req, res) => { res.render('admin/inputTour') })
 router.get('/admin/edit/:tourid', [Auth, adminAuth], admin.getUpdate)
 router.get('/admin/delete/:tourid', [Auth, adminAuth], admin.deleteTour)

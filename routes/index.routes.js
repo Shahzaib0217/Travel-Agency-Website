@@ -27,6 +27,10 @@ router.post('/signup', upload.single('image'), index.signup);
 //Displaying Tours
 router.get('/tours', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour', 'tour') });
 router.get('/tour/:id', user.DisplayTour);
+//filteration
+router.get('/3DayTour', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour where tourDuration=3', 'tour') });
+router.get('/5DayTour', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour where tourDuration=5', 'tour') });
+router.get('/7DayTour', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour where tourDuration=7', 'tour') });
 //search
 router.post('/search', user.search)
 // Comments

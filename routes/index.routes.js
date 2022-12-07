@@ -10,6 +10,12 @@ const cheerio = require('cheerio');
 const upload1 = require('../config/multer1')
 const upload2 = require('../config/multer2')
 const chat = require('../chat/server')
+const {
+    Auth,
+    noAuth,
+    Verified,
+    notVerified,
+} = require("../middlewares/authCheck.middleware");
 /* GET home page. */
 router.get('/', (req, res) => { res.render('home', { session: req.session }); });
 // Login

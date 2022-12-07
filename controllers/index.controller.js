@@ -16,6 +16,7 @@ exports.signin = async (req, res) => {
                 req.session.userEmail = data[0].userEmail;
                 req.session.username = data[0].userName;
                 req.session.userimg = data[0].userImage;
+                req.session.role = data[0].role;
                 if (data[0].role == "user") {
                     res.redirect("/");
                 }

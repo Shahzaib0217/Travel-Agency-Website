@@ -5,6 +5,9 @@ const user = require("../controllers/userView.controller")
 const upload = require('../config/multer')
 const admin = require("../controllers/admin.controller")
 const scrap = require("../controllers/webscraping");
+const request = require("request");
+const cheerio = require('cheerio');
+
 /* GET home page. */
 router.get('/', (req, res) => { res.render('home', { session: req.session }); });
 // Login
@@ -51,4 +54,6 @@ router.get('/admin/edit')
 router.get('/admin/delete')
 router.post('/admin/insert')
 router.post('/admin/edit')
+
+
 module.exports = router;

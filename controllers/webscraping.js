@@ -1,28 +1,26 @@
 const cheerio = require('cheerio');
-const axios = require('axios');
+const request = require('request');
+const packages = [];
 
-
+function getdata() {
+    request("https://www.trips.pk/tours/bahrain", (error, response, html) => {
+        if (!error && response.statusCode == 200) {
+            const $ = cheerio.load(html);
+            $(".package-tab-right").each((i, el) => {
+                const heading = $(el).find("h4").text().replace(/\s\s+/g, "");
+                const package_price = $(el)
+                    .find(".package-price")
+                    .text()
+                    .replace(/\s\s+/g, "");
+                packages.push({ heading, package_price });
+            });
+        }
+    })
+}
 exports.display = (req, res) => {
-    const url = 'https://www.trips.pk/tours/bahrain';
-    const movies = [];
-    axios.get(url).
-        then((response) => {
-            res.status(200)
-            {
-                console.log("ll");
-                let $ = cheerio.load(response.data);
-                $('.packages-listing .onhovercolor').each(function (el, index) {
-                    let url = $(this).attr('href');
-                    let title = $(this).find('h4 ').text();
-                    let price = $(this).find('.package-price').text();
-                    movies.push({ title: title, url: url, price: price });
-                    console.log(movies);
-                });
-            }
-        }).catch((error) => {
-            console.log(error);
-        })
+
+    getdata();
     res.render("user/webscraping", {
-        data: movies,
+        data: packages,
     })
 }

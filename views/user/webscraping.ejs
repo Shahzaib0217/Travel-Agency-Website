@@ -19,19 +19,16 @@
                         <tr>
                             <th>Title</th>
                             <th>Price</th>
-                            <th>Url</th>
                         </tr>
                         <% data.forEach(function(tour_data){ %>
                             <tr style=" background-color:cadetblue;">
                                 <td>
-                                    <%= tour_data.title %>
+                                    <%= tour_data.heading %>
                                 </td>
                                 <td>
-                                    <%= tour_data.price %>
+                                    <%= tour_data.package_price %>
                                 </td>
-                                <td>
-                                    <%= tour_data.url %>
-                                </td>
+
 
                             </tr>
                             <% }); %>

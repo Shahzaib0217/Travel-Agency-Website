@@ -9,16 +9,15 @@
 <body>
     <%- include('../partials/adminNav'); %>
         <div class="container">
-            <h1 class="mt-5 mb-5 text-center text-primary text-success"><b>Add New Tour</b></h1>
+            <h1 class="mt-3 mb-3 text-center text-primary text-success"><b>Add New Tour</b></h1>
 
-            <div class="row mt-5">
-                <div class="col-md-3">&nbsp;</div>
-                <div class="col-md-6">
-                    <div class="card bg-light">
+            <div class="row">
+                <div class="col-md-10 mx-auto">
+                    <div class="card bg-light mb-4">
                         <div class="card-header">Enter New Tour Data below</div>
                         <div class="card-body">
                             <form method="post" action="/admin/insert" enctype="multipart/form-data"
-                                class="needs-validation" novalidate>
+                                class="needs-validation " novalidate>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
@@ -41,31 +40,42 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="mb-3">
                                             <label>Tour Description</label>
                                             <textarea name="TourDesc" id="TourDesc" cols="30" rows="5"
                                                 class="form-control" required
                                                 style="background: #fff; resize: none;"></textarea>
                                         </div>
-
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label>Tour Inclusions</label>
+                                            <textarea name="TourIncl" id="TourIncl" cols="30" rows="5"
+                                                class="form-control" required
+                                                style="background: #fff; resize: none;"></textarea>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label>Phone Number</label>
-                                            <input type="number" name="phoneNumber" id="phoneNumber"
-                                                class="form-control" required />
+                                            <label>Select Hotel</label>
+                                            <select name="Hotels" id="Hotels" class="form-control" required>
+                                                <option value="A1 Hotel">A1 Hotel</option>
+                                                <option value="A2 Hotel">A2 Hotel</option>
+                                                <option value="A3 Hotel">A3 Hotel</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label>Gender</label>
-                                            <select name="gender" id="gender" class="form-control" required>
-                                                <option value="Male">Male</option>
-                                                <option value="Female">Female</option>
-                                                <option value="Other">Other</option>
+                                            <label>Select Duration</label>
+                                            <select name="Duration" id="Duration" class="form-control" required>
+                                                <option value="1 Day">1 Day</option>
+                                                <option value="3 Days">3 Days</option>
+                                                <option value="5 Days">5 Days</option>
+                                                <option value="7 Days">7 Days</option>
                                             </select>
                                         </div>
                                     </div>
@@ -73,14 +83,33 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label>Profile Picture</label>
-                                            <input type="file" name="image" id="image" class="form-control" required />
+                                            <label>Card Image</label>
+                                            <input type="file" name="CardImage" id="CardImage" class="form-control"
+                                                required />
                                         </div>
                                     </div>
-                                    <div class="col-md-6 mt-4 ">
+                                    <div class="col-md-6">
                                         <div class="mb-3">
-                                            <input type="submit" name="submit_button" id="submit_button"
-                                                class="btn btn-primary" value="submit" />
+                                            <label>Banner Image</label>
+                                            <input type="file" name="BannerImage" id="BannerImage" class="form-control"
+                                                required />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label>Price</label>
+                                            <input type="number" name="price" id="price" class="form-control"
+                                                required />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mt-4">
+                                            <div>
+                                                <input type="submit" name="submit_button" id="submit_button"
+                                                    class="btn btn-success" value="submit" />
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

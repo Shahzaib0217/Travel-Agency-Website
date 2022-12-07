@@ -7,7 +7,8 @@ const admin = require("../controllers/admin.controller")
 const scrap = require("../controllers/webscraping");
 const request = require("request");
 const cheerio = require('cheerio');
-
+const upload1 = require('../config/multer1')
+const upload2 = require('../config/multer2')
 /* GET home page. */
 router.get('/', (req, res) => { res.render('home', { session: req.session }); });
 // Login
@@ -59,10 +60,9 @@ router.get('/admin/customOrders', (req, res) => { user.Display(req, res, 'admin/
 router.get('/admin/Orders', (req, res) => { user.Display(req, res, 'admin/displayOrders', 'SELECT * FROM `order`', '`order`') })
 router.get('/admin/Feedback', (req, res) => { user.Display(req, res, 'admin/displayfeedback', 'Select * from feedback', 'feedback') })
 router.get('/admin/insert', (req, res) => { res.render('admin/inputTour') })
-router.get('/admin/edit')
-router.get('/admin/delete')
-router.post('/admin/insert')
-router.post('/admin/edit')
-
+router.get('/admin/edit/:tourid', admin.getUpdate)
+router.get('/admin/delete/:tourid', admin.deleteTour)
+router.post('/admin/insert', upload1.single('CardImage'), upload2.single('BannerImage'), admin.insertTour)
+router.post('/admin/edit/:tourid', admin.postUpdate)
 
 module.exports = router;

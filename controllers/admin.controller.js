@@ -16,3 +16,36 @@ exports.ReloadTour = async (req, res,) => {
     });
     res.redirect('/admin')
 }
+
+exports.insertTour = async (req, res) => {
+    const { name, Tourcity, TourDesc, TourIncl, Hotels, Duration, price } = req.body;
+    const CardImage = req.file1.originalname;
+    const BannerImage = req.file2.originalname;
+    await Tour.create({
+        tourName: name, tourDescription: TourDesc, tourCity: Tourcity, tourInclusions: TourIncl,
+        tourHotels: Hotels, tourPrice: price, tourImage: CardImage, tourBanner: BannerImage, tourDuration: Duration
+    });
+    res.redirect('/admin')
+}
+exports.getUpdate = async (req, res) => {
+    const TourID = req.params.tourid
+    const tour_dataa = await Tour.findAll({ where: { tourID: TourID } });
+    console.log(tour_dataa[0])
+    res.render('admin/editTour', { tour_data: tour_dataa[0] })
+}
+exports.postUpdate = async (req, res) => {
+    const { name, Tourcity, TourDesc, TourIncl, Hotels, Duration, price } = req.body;
+    const CardImage = req.file1.originalname;
+    const BannerImage = req.file2.originalname;
+    await Tour.create({
+        tourName: name, tourDescription: TourDesc, tourCity: Tourcity, tourInclusions: TourIncl,
+        tourHotels: Hotels, tourPrice: price, tourImage: CardImage, tourBanner: BannerImage, tourDuration: Duration
+    });
+    res.redirect('/admin')
+}
+
+exports.deleteTour = async (req, res) => {
+    const TourID = req.params.tourid
+    await Tour.destroy({ where: { tourID: TourID } });
+    res.redirect('/admin')
+}

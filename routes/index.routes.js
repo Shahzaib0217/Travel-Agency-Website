@@ -30,6 +30,12 @@ router.post('/signup', upload.single('image'), index.signup);
 //Displaying Tours
 router.get('/tours', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour', 'tour') });
 router.get('/tour/:id', user.DisplayTour);
+//filteration
+router.get('/3DayTour', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour where tourDuration=3', 'tour') });
+router.get('/5DayTour', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour where tourDuration=5', 'tour') });
+router.get('/7DayTour', (req, res) => { user.Display(req, res, 'user/Alltours', 'Select * from tour where tourDuration=7', 'tour') });
+//search
+router.post('/search', user.search)
 // Comments
 router.post('/AddComment/:id', user.AddComment);
 router.post('/AddReply/:tourid/:cmntid', user.AddReply);
@@ -38,6 +44,9 @@ router.get('/bookTour/:tourid', user.BookTour);
 router.get('/customOrder', user.CustomTour);
 router.post('/bookTour/:tourid', user.PostBookTour);
 router.post('/customOrder', user.PostCustomTour); // change function
+// contact us
+router.get('/contactUs', (req, res) => { res.render('user/contactUs') })
+router.post('/contactUs', user.sendContact)
 //webscraping
 router.get('/moretour', scrap.display);
 // User Feedback

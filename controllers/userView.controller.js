@@ -91,3 +91,14 @@ exports.postfeedback = async (req, res) => {
     await Feedback.create({ tourID: tourID, userID: userID, review: review });
     res.redirect('/')
 }
+
+exports.sendContact = async (req, res) => {
+    const { contact } = req.body
+    // await Contact.create({ userID: req.session.userid, userEmail: session.userEmail, message: contact });
+    res.redirect('/')
+}
+
+exports.search = async (req, res) => {
+    const { search } = req.body
+    this.Display(req, res, 'user/Alltours', `Select * from tour WHERE tourName LIKE '%${search}%'`, 'tour')
+}

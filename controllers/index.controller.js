@@ -21,15 +21,16 @@ exports.signin = async (req, res) => {
                 }
                 else { res.redirect("/admin") }
             }
-            else { res.send('Incorrect Password'); }
+            else { res.redirect('/signin'); }
         }
-        else { res.send('Incorrect Email Address'); }
+        else { res.redirect('/signin'); }
     }
     else {
-        res.send('Please Enter Email Address and Password Details');
+        res.redirect('/signin');
         res.end();
     }
 }
+
 
 // Forget Password
 let payload;

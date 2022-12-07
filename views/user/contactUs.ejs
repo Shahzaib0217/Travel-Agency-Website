@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <%- include('../partials/head'); %>
+        <title>Contact Us</title>
+</head>
+
+<body>
+    <%- include('../partials/nav2'); %>
+        <div class="container">
+            <h1 class="mt-5 mb-5 text-center text-primary text-success"><b>Contact Us</b></h1>
+
+            <div class="row mt-5">
+                <div class="col-md-3">&nbsp;</div>
+                <div class="col-md-6">
+                    <div class="card bg-light">
+                        <div class="card-header">Hi there!</div>
+                        <div class="card-body">
+                            <form method="post" action="/contactUs">
+                                <div class="mb-3">
+                                    <label></label>
+                                    <textarea name="contact" id="contact" cols="30" rows="5" class="form-control"
+                                        required placeholder="Send us a message"
+                                        style="background: #fff; resize: none;"></textarea>
+                                </div>
+                                <div class="mb-3 mt-3 text-center">
+                                    <input type="submit" class="btn btn-success " value="Send" />
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

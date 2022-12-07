@@ -16,15 +16,15 @@
             <div class="card-body">
                 <div class="table-responsive">
                     <table class="table table-bordered">
-                        <tr>
-                            <th>Tour ID</th>
-                            <th>Tour Name</th>
-                            <th>City</th>
-                            <th>Description</th>
-                            <th>Inclusions</th>
-                            <th>Hotels</th>
-                            <th>Price</th>
-                            <th>Edit/ Delete</th>
+                        <tr style=" background-color:green;" class="text-white"></tr>
+                        <th>Tour ID</th>
+                        <th>Tour Name</th>
+                        <th>City</th>
+                        <th>Description</th>
+                        <th>Inclusions</th>
+                        <th>Hotels</th>
+                        <th>Price</th>
+                        <th>Edit/ Delete</th>
                         </tr>
                         <% data.forEach(function(tour_data){ %>
                             <tr style=" background-color:cadetblue;">
@@ -50,8 +50,10 @@
                                     <%= tour_data.tourPrice %>
                                 </td>
                                 <td>
-                                    <a href="/edit/<%= tour_data.id %>" class="btn btn-primary btn-sm">Edit</a>
-                                    <a href="/delete/<%= tour_data.id %>" class="btn btn-primary btn-sm mt-3">Delete</a>
+                                    <a href="/admin/edit/<%= tour_data.tourID %>"
+                                        class="btn btn-primary btn-sm">Edit</a>
+                                    <a href="/admin/delete/<%= tour_data.tourID %>"
+                                        class="btn btn-primary btn-sm mt-3">Delete</a>
                                 </td>
                             </tr>
                             <% }); %>

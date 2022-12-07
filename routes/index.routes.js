@@ -35,6 +35,9 @@ router.get('/bookTour/:tourid', user.BookTour);
 router.get('/customOrder', user.CustomTour);
 router.post('/bookTour/:tourid', user.PostBookTour);
 router.post('/customOrder', user.PostCustomTour); // change function
+// contact us
+router.get('/contactUs', (req, res) => { res.render('user/contactUs') })
+router.post('/contactUs', user.sendContact)
 //webscraping
 router.get('/moretour', scrap.display);
 // User Feedback

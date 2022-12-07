@@ -91,3 +91,9 @@ exports.postfeedback = async (req, res) => {
     await Feedback.create({ tourID: tourID, userID: userID, review: review });
     res.redirect('/')
 }
+
+exports.sendContact = async (req, res) => {
+    const { contact } = req.body
+    // await Contact.create({ userID: req.session.userid, userEmail: session.userEmail, message: contact });
+    res.redirect('/')
+}

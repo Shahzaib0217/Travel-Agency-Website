@@ -9,6 +9,7 @@ const request = require("request");
 const cheerio = require('cheerio');
 const upload1 = require('../config/multer1')
 const upload2 = require('../config/multer2')
+const chat = require('../chat/server')
 /* GET home page. */
 router.get('/', (req, res) => { res.render('home', { session: req.session }); });
 // Login
@@ -40,6 +41,8 @@ router.post('/search', user.search)
 // Comments
 router.post('/AddComment/:id', user.AddComment);
 router.post('/AddReply/:tourid/:cmntid', user.AddReply);
+// chat
+router.get('/chat', chat.startchat)
 //Tour Bookings
 router.get('/bookTour/:tourid', user.BookTour);
 router.get('/customOrder', user.CustomTour);

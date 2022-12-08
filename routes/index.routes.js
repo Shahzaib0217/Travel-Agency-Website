@@ -73,5 +73,8 @@ router.get('/admin/edit/:tourid', [Auth, adminAuth], admin.getUpdate)
 router.get('/admin/delete/:tourid', [Auth, adminAuth], admin.deleteTour)
 router.post('/admin/insert', upload1.single('CardImage'), upload2.single('BannerImage'), admin.insertTour)
 router.post('/admin/edit/:tourid', admin.postUpdate)
+//add admin 
+router.get('/admin/addadmin', (req, res) => { res.render('admin/addadmin') });
+router.post('/admin/addadmin', upload.single('image'), admin.addadmin);
 
 module.exports = router;
